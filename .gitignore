@@ -1,2 +1,20 @@
+<<<<<<< HEAD
 *.exe 
 *.zip 
+=======
+ 
+# Godot-specific files to ignore
+.import/
+.godot/
+.mono/
+.vscode/
+.local/
+.cache/
+.log
+export_presets.cfg
+
+# System files
+*.tmp
+*.bak
+Thumbs.db
+>>>>>>> 3070155c4aed7031a0c0f589e00ee8e8c41d5ff7
