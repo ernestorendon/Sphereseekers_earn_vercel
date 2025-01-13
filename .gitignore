@@ -1,0 +1,15 @@
+ 
+# Godot-specific files to ignore
+.import/
+.godot/
+.mono/
+.vscode/
+.local/
+.cache/
+.log
+export_presets.cfg
+
+# System files
+*.tmp
+*.bak
+Thumbs.db
