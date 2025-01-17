@@ -3,7 +3,7 @@
 ## **Project Description**
 Sphereseekers is a 3D maze navigation game where players control a ball through challenging mazes filled with obstacles, reset zones, and timers. The game is designed to leverage iPhone’s gyroscope and accelerometer sensors, allowing players to tilt their device to navigate the ball. The ultimate goal is to navigate the maze and reach the exit as quickly as possible, while avoiding pitfalls and reset zones.
 
-The project is currently being developed using the Godot Engine (Mono version) with C#. Initial development and testing are being conducted on Windows desktops, with plans to migrate to macOS for iPhone development.
+The project is currently being developed using the Godot Engine (Mono version) with C#. Initial development and testing are being conducted on Windows and Apple platforms, with plans to migrate to macOS for iPhone development.
 
 ---
 
