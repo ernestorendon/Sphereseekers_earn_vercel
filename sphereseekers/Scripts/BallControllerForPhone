@@ -1,0 +1,39 @@
+using Godot;
+using System;
+
+public class BallController : RigidBody
+{
+    [Export]
+    public float Sensitivity = 10.0f;
+
+    [Export]
+    public float GravityStrength = 9.8f;
+
+    private Vector3 _inputForce = Vector3.Zero;
+
+    public override void _IntegrateForces(PhysicsDirectBodyState state)
+    {
+        Vector3 accel = Input.GetAccelerometer();
+
+        // Adjust for device orientation (landscape vs portrait)
+        if (OS.GetScreenOrientation() == OS.ScreenOrientation.LandscapeLeft)
+        {
+            _inputForce.x = -accel.y;
+            _inputForce.z = accel.x;
+        }
+        else if (OS.GetScreenOrientation() == OS.ScreenOrientation.LandscapeRight)
+        {
+            _inputForce.x = accel.y;
+            _inputForce.z = -accel.x;
+        }
+        else // Portrait
+        {
+            _inputForce.x = accel.x;
+            _inputForce.z = accel.y;
+        }
+
+        _inputForce *= Sensitivity * GravityStrength;
+
+        ApplyCentralForce(_inputForce);
+    }
+}
