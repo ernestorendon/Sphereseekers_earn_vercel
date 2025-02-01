@@ -1,0 +1,138 @@
+[gd_scene load_steps=11 format=3 uid="uid://ck146mn70mgda"]
+
+[ext_resource type="Script" path="res://Scripts/PauseMenu.gd" id="1_haljc"]
+
+[sub_resource type="FontVariation" id="FontVariation_saqfs"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nx4bk"]
+font = SubResource("FontVariation_saqfs")
+font_size = 37
+
+[sub_resource type="FontVariation" id="FontVariation_xawgg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mum6f"]
+font = SubResource("FontVariation_xawgg")
+font_size = 37
+
+[sub_resource type="FontVariation" id="FontVariation_tqtln"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_oitn5"]
+font = SubResource("FontVariation_tqtln")
+font_size = 37
+
+[sub_resource type="FontVariation" id="FontVariation_qv70q"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_sic6u"]
+font = SubResource("FontVariation_qv70q")
+font_size = 28
+
+[sub_resource type="LabelSettings" id="LabelSettings_i50tv"]
+font_size = 42
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_haljc")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ResumeButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 416.0
+offset_top = 96.0
+offset_right = 736.0
+offset_bottom = 160.0
+
+[node name="Label" type="Label" parent="ResumeButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Resume"
+label_settings = SubResource("LabelSettings_nx4bk")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 416.0
+offset_top = 176.0
+offset_right = 736.0
+offset_bottom = 240.0
+
+[node name="Label" type="Label" parent="RestartButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Restart Level"
+label_settings = SubResource("LabelSettings_mum6f")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OptionsButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 416.0
+offset_top = 256.0
+offset_right = 736.0
+offset_bottom = 320.0
+
+[node name="Label" type="Label" parent="OptionsButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Options"
+label_settings = SubResource("LabelSettings_oitn5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ReturnToMainMenuButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 416.0
+offset_top = 336.0
+offset_right = 736.0
+offset_bottom = 400.0
+
+[node name="Label" type="Label" parent="ReturnToMainMenuButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Return To Main Menu"
+label_settings = SubResource("LabelSettings_sic6u")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SphereSeeker" type="Label" parent="."]
+offset_left = 424.0
+offset_top = 16.0
+offset_right = 725.0
+offset_bottom = 74.0
+text = "SphereSeekers"
+label_settings = SubResource("LabelSettings_i50tv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="ResumeButton" to="." method="_on_ResumeButton_pressed"]
+[connection signal="pressed" from="RestartButton" to="." method="_on_RestartButton_pressed"]
+[connection signal="pressed" from="OptionsButton" to="." method="_on_OptionsButton_pressed"]
+[connection signal="pressed" from="ReturnToMainMenuButton" to="." method="_on_MainMenuButton_pressed"]
