@@ -16,8 +16,10 @@ func toggle_pause():
 	visible = is_paused  # Show or hide the pause menu
 
 	if is_paused:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		set_process_input(true)  # Keep listening for input while paused
 	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		set_process_input(true)  # Ensures _input() still detects Esc when unpaused
 
 # Resume the game
