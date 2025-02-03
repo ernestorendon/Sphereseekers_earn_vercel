@@ -24,6 +24,7 @@ func toggle_pause():
 
 # Resume the game
 func _on_ResumeButton_pressed():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	toggle_pause()
 
 # Restart the current level
