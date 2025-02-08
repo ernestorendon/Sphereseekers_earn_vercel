@@ -24,6 +24,7 @@ func toggle_pause():
 
 # Resume the game
 func _on_ResumeButton_pressed():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	toggle_pause()
 
 # Restart the current level
@@ -38,4 +39,4 @@ func _on_OptionsButton_pressed():
 # Return to the main menu
 func _on_MainMenuButton_pressed():
 	get_tree().paused = false  # Unpause before changing scene
-	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Interface/MainMenu.tscn")

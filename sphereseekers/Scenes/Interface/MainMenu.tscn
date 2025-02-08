@@ -1,0 +1,145 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcqsy6vwxhbwq"]
+
+[ext_resource type="Script" path="res://Scripts/Interface/MainMenu.gd" id="1_buu5b"]
+
+[sub_resource type="FontVariation" id="FontVariation_mjp1k"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_s3ven"]
+font = SubResource("FontVariation_mjp1k")
+font_size = 37
+
+[sub_resource type="LabelSettings" id="LabelSettings_ucixb"]
+font_size = 42
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_buu5b")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Continue" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -160.0
+offset_top = 96.0
+offset_right = 160.0
+offset_bottom = 160.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="Continue"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Continue"
+label_settings = SubResource("LabelSettings_s3ven")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="New Game" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -160.0
+offset_top = 176.0
+offset_right = 160.0
+offset_bottom = 240.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="New Game"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "New Game"
+label_settings = SubResource("LabelSettings_s3ven")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Load Game" type="Button" parent="."]
+layout_mode = 0
+offset_left = 416.0
+offset_top = 256.0
+offset_right = 736.0
+offset_bottom = 320.0
+
+[node name="Label" type="Label" parent="Load Game"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Load Game"
+label_settings = SubResource("LabelSettings_s3ven")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Options" type="Button" parent="."]
+layout_mode = 0
+offset_left = 416.0
+offset_top = 336.0
+offset_right = 736.0
+offset_bottom = 400.0
+
+[node name="Label" type="Label" parent="Options"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Options"
+label_settings = SubResource("LabelSettings_s3ven")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Exit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 416.0
+offset_top = 416.0
+offset_right = 736.0
+offset_bottom = 480.0
+
+[node name="Label" type="Label" parent="Exit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Exit"
+label_settings = SubResource("LabelSettings_s3ven")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SphereSeeker" type="Label" parent="."]
+layout_mode = 0
+offset_left = 424.0
+offset_top = 16.0
+offset_right = 725.0
+offset_bottom = 74.0
+text = "SphereSeekers"
+label_settings = SubResource("LabelSettings_ucixb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="New Game" to="." method="_on_New_Game_pressed"]

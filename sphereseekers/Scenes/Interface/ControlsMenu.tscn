@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfe2xiba6vq2s"]
+
+[ext_resource type="Script" path="res://Scripts/Interface/ControlsMenu.gd" id="1_eyda7"]
+[ext_resource type="Texture2D" uid="uid://c2x1ealp1h621" path="res://Assets/ArrowKeys.png" id="2_f614k"]
+
+[node name="ControlsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -352.0
+offset_bottom = -148.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eyda7")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 800.0
+offset_bottom = 500.0
+color = Color(0.321728, 0.321728, 0.321728, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 428.0
+offset_bottom = 103.0
+
+[node name="Image" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 150.0
+texture = ExtResource("2_f614k")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 325.0
+offset_top = 430.0
+offset_right = 475.0
+offset_bottom = 480.0
+text = "Continue"
+
+[connection signal="pressed" from="Button" to="." method="_on_continue_pressed"]

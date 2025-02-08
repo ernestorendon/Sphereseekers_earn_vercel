@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://Scripts/Objects/limit.gd" id="7_ajsod"]
 [ext_resource type="Script" path="res://Scripts/Objects/cannonball.gd" id="8_0y04l"]
 [ext_resource type="Script" path="res://Scripts/Objects/exit_area.gd" id="9_mb8kl"]
-[ext_resource type="PackedScene" uid="uid://ck146mn70mgda" path="res://Scenes/PauseMenu.tscn" id="10_sa70e"]
+[ext_resource type="PackedScene" uid="uid://ck146mn70mgda" path="res://Scenes/Interface/PauseMenu.tscn" id="10_sa70e"]
 
 [sub_resource type="GDScript" id="GDScript_5len1"]
 script/source = "extends CanvasLayer
@@ -91,7 +91,7 @@ radius = 2.5
 height = 5.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_aqxcx"]
-radius = 2.5
+radius = 2.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_c7nxv"]
 radius = 4.0
