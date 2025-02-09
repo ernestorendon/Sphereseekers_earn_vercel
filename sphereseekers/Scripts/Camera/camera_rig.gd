@@ -24,8 +24,8 @@ var camzoom : float = 5.0
 @onready var spring_arm_3d: SpringArm3D = $HRotation/VRotation/SpringArm3D
 
 func _ready():
-	# Hides mouse at start
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	pass
+	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 
 func _physics_process(delta: float) -> void:

@@ -20,6 +20,7 @@ const GameEmbed = () => {
                 width="1147px"
                 height="630px"
                 title="Sphereseeker"
+                autoFocus="true"
             />
         </div>
     );

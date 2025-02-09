@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=3 uid="uid://ck146mn70mgda"]
+
+[ext_resource type="Script" path="res://Scripts/Interface/PauseMenu.gd" id="1_haljc"]
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_haljc")
+
+[node name="backgound" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="title" type="Label" parent="."]
+layout_mode = 0
+offset_bottom = 23.0
+text = "
+"
+
+[node name="resume_button" type="Button" parent="."]
+layout_mode = 2
+offset_right = 8.0
+offset_bottom = 8.0
+action_mode = 0
+
+[node name="restart_button" type="Button" parent="."]
+layout_mode = 2
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="options_button" type="Button" parent="."]
+layout_mode = 2
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="menu_button" type="Button" parent="."]
+layout_mode = 2
+offset_right = 8.0
+offset_bottom = 8.0
+
+[connection signal="pressed" from="resume_button" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="restart_button" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="options_button" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="menu_button" to="." method="_on_main_menu_button_pressed"]
