@@ -18,6 +18,7 @@ config/icon="res://Vector/Textures/icon.svg"
 [autoload]
 
 Global="*res://Scripts/Interface/Global.gd"
+WebSaveLoad="*res://Scripts/Global/WebSaveLoad.gd"
 
 [dotnet]
 
