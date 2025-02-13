@@ -1,9 +1,10 @@
 extends RigidBody3D
 @export var movement_speed : float = 20.0
 @export var max_linear_velocity : float = 20.0
-@export var max_angular_velocity : float = 20.0
+@export var max_angular_velocity : float = 1000.0
 
 @onready var camera_3d: Camera3D = $"../CameraRig/HRotation/VRotation/SpringArm3D/Camera3D"
+
 
 """
 TODO:
@@ -16,8 +17,10 @@ TODO:
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	
 	# Set speed limits for speed and rotation speed of marble
-	linear_velocity.clampf(-max_linear_velocity, max_linear_velocity)
-	angular_velocity.clampf(-max_angular_velocity, max_angular_velocity)
+	linear_velocity.z = clamp(linear_velocity.z, -max_linear_velocity, max_linear_velocity)
+	linear_velocity.x = clamp(linear_velocity.x, -max_linear_velocity, max_linear_velocity)
+	
+	angular_velocity.x = clamp(angular_velocity.x, -max_angular_velocity, max_angular_velocity)
 	
 	# Get inputs from user to calculate intended direction
 	var f_input = Input.get_action_raw_strength("ui_down") - Input.get_action_raw_strength("ui_up")
@@ -39,23 +42,35 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	
 	print("Forward Before force: ", direction_f)
 	print("Horizonatal Before force: ", direction_h)
+	print("==========================================")
+	print("Linear velocity (magnitude): ", get_linear_velocity().length())
+	print("Linear velocity (vector): ", get_linear_velocity())
+	print("==========================================")
+	print("Angular velocity (magnitude): ", get_angular_velocity())
+	print("Angular velocity (vector): ", get_angular_velocity().length())
 	apply_central_force(direction_f * movement_speed * get_physics_process_delta_time())
 	apply_central_force(direction_h * movement_speed * get_physics_process_delta_time())
 	
 		# Ball will not move around while shift is being held down...
 	if (Input.is_action_pressed("shift")):
+		linear_velocity.x = 0
+		linear_velocity.z = 0
 		if (Input.is_action_pressed("spacebar")):
 			#set_linear_velocity(Vector3.ZERO)
 			#set_angular_velocity(Vector3.ZERO)
 			#set_inertia(Vector3.ZERO)
 			print("SHIFT + SPACEBAR PRESSED")
 			print("Rotation impulse direction matrix: ", direction_f)
-			print("Angular velocity: ", get_angular_velocity())
-			apply_torque_impulse(direction_f + Vector3(0,0,5))
+			#print("Angular velocity: ", get_angular_velocity()x)
+			apply_torque_impulse(Vector3(10,0,0))
 			
 			#print(direction_h)
 			#apply_torque_impulse(direction_f)
-	
+	if (Input.is_action_just_released("shift")):
+		var spin_speed = get_angular_velocity().length()
+		apply_central_impulse(spin_speed * direction_f)
+		#apply_central_impulse(1000 * direction_f)
+		print("shift released!")
 		
 		## Ball will not move around while shift is being held down...
 	#if (Input.is_action_pressed("shift")):
