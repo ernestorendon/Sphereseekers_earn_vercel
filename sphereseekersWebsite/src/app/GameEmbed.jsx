@@ -13,16 +13,14 @@ const GameEmbed = () => {
     }
 
     return (
-        <div>
-            <iframe 
+        <div className="game-container">
+            <iframe
                 className="game-embed"
                 src="/game/index.html"
-                width="1147px"
-                height="630px"
                 title="Sphereseeker"
-                autoFocus="true"
             />
         </div>
+
     );
 };
 
