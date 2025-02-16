@@ -1,7 +1,5 @@
 extends Control
 
-const DESKTOP_OS_LIST = ["Windows", "Linux", "macOS"]
-
 func _ready():
 	
 	var background = $Background
@@ -9,22 +7,20 @@ func _ready():
 	var image = $Image
 	var button = $Button
 	
-	if is_running_on_desktop():
+	if not Global.is_mobile:
 		set_objects_for_desktop(background, label, image, button)
 	else:
 		# we assume that is a smartphone
 		set_objects_for_smartphone(background, label, image, button)
 	
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _on_continue_pressed():
-	queue_free()
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	Global.controls_shown = true
 	get_tree().paused = false
-	
-func is_running_on_desktop() -> bool:
-	return OS.get_name() in DESKTOP_OS_LIST
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	queue_free()
+	get_parent().controls_menu_instance = null
 	
 func set_objects_for_desktop(background, label, image, button):
 	var screen_size = get_viewport_rect().size

@@ -22,8 +22,8 @@ color = Color(0.321728, 0.321728, 0.321728, 1)
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_right = 428.0
-offset_bottom = 103.0
+offset_right = 1.0
+offset_bottom = 23.0
 
 [node name="Image" type="TextureRect" parent="."]
 layout_mode = 0
