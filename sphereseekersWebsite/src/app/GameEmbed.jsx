@@ -1,5 +1,6 @@
 'use client';
 import React, { useEffect, useState } from "react";
+import {isMobile} from 'react-device-detect';
 
 const GameEmbed = () => {
     const [isMounted, setIsMounted] = useState(false);
@@ -12,6 +13,17 @@ const GameEmbed = () => {
         return <div>Loading...</div>;
     }
 
+    if (isMobile) {
+        return (
+            <div className="game-container-mobile">
+                <iframe
+                    className="game-embed"
+                    src="/game/index.html"
+                    title="Sphereseeker"
+                />
+            </div>
+        );
+    }
     return (
         <div className="game-container">
             <iframe

@@ -17,7 +17,8 @@ func _ready() -> void:
 	Global.is_mobile = is_running_on_mobile_browser()
 	
 	if Global.is_mobile:
-		get_window().size = Vector2(400, 600)
+		var screen_size = get_viewport_rect().size
+		get_window().size = Vector2(screen_size.x, screen_size.y)
 		set_objects_for_mobile(background, title, continue_button, new_game_button, load_game_button, options_button, exit_button)
 	else:
 		set_objects_for_desktop(background, title, continue_button, new_game_button, load_game_button, options_button, exit_button)
@@ -93,7 +94,7 @@ func set_objects_for_desktop(background, title, continue_button, new_game_button
 	))
 	
 	# Load Game
-	load_game_button.text = "Options"
+	load_game_button.text = "Load Game"
 	load_game_button.set_size(Vector2(bg_size.x * 0.5, bg_size.y * 0.1))
 
 	load_game_button.set_position(Vector2(
@@ -102,7 +103,7 @@ func set_objects_for_desktop(background, title, continue_button, new_game_button
 	))
 	
 	# Options
-	options_button.text = "Main Menu"
+	options_button.text = "Options"
 	options_button.set_size(Vector2(bg_size.x * 0.5, bg_size.y * 0.1))
 
 	options_button.set_position(Vector2(
@@ -111,7 +112,7 @@ func set_objects_for_desktop(background, title, continue_button, new_game_button
 	))
 	
 	# Exit
-	exit_button.text = "Main Menu"
+	exit_button.text = "Exit"
 	exit_button.set_size(Vector2(bg_size.x * 0.5, bg_size.y * 0.1))
 
 	exit_button.set_position(Vector2(
