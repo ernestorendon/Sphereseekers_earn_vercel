@@ -1,7 +1,7 @@
 extends RigidBody3D
 @export var movement_speed : float = 20.0
 @export var max_linear_velocity : float = 20.0
-@export var max_angular_velocity : float = 1000.0
+@export var max_angular_velocity : float = 175.0
 
 @onready var camera_3d: Camera3D = $"../CameraRig/HRotation/VRotation/SpringArm3D/Camera3D"
 
@@ -53,34 +53,28 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	
 		# Ball will not move around while shift is being held down...
 	if (Input.is_action_pressed("shift")):
+		
+		#linear_velocity.x = lerp(linear_velocity.x, 0.0, 0.8)
 		linear_velocity.x = 0
 		linear_velocity.z = 0
-		if (Input.is_action_pressed("spacebar")):
-			#set_linear_velocity(Vector3.ZERO)
-			#set_angular_velocity(Vector3.ZERO)
-			#set_inertia(Vector3.ZERO)
+		if (Input.is_action_just_pressed("spacebar")):
 			print("SHIFT + SPACEBAR PRESSED")
 			print("Rotation impulse direction matrix: ", direction_f)
-			#print("Angular velocity: ", get_angular_velocity()x)
-			apply_torque_impulse(Vector3(10,0,0))
+			apply_torque_impulse(Vector3(10,0,0) * 3)
+			linear_velocity.x = 0
+			linear_velocity.z = 0
+			return
 			
-			#print(direction_h)
-			#apply_torque_impulse(direction_f)
 	if (Input.is_action_just_released("shift")):
-		var spin_speed = get_angular_velocity().length()
-		apply_central_impulse(spin_speed * direction_f)
-		#apply_central_impulse(1000 * direction_f)
-		print("shift released!")
+		var lil_jump_magnitude = 0.6 # Magnitude of lil jump after releasing charged boost
+		var lil_jump_impulse = lil_jump_magnitude * Vector3.ONE
 		
-		## Ball will not move around while shift is being held down...
-	#if (Input.is_action_pressed("shift")):
-		#if (Input.is_action_pressed("spacebar")):
-			##set_linear_velocity(Vector3.ZERO)
-			##set_angular_velocity(Vector3.ZERO)
-			##set_inertia(Vector3.ZERO)
-			#print("Angular velocity: ", get_angular_velocity())
-			#apply_torque_impulse(Vector3(10,0,10))
-			#print("shift + spacebar pressed")
+		var final_boost_vector = lil_jump_impulse + direction_f # Set direction of boost
+		
+		var spin_speed = get_angular_velocity().length()
+		apply_central_impulse(spin_speed * final_boost_vector) # Apply boost to marble
+		
+		print("shift released!")
 
 
 # Collision detection method
