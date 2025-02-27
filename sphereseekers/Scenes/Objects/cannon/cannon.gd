@@ -6,7 +6,9 @@ extends Node3D
 @export var shoot_delay: float = 0.5
 @export var cylinder_radius: float = 5
 @export var scale_factor: float = 1.0
-@export var color : Color = Color(1.0, 1.0, 0.0)
+@export var cannon_material: StandardMaterial3D
+@export var projectile_material: StandardMaterial3D
+@export var rotate: bool = false
 
 var direction: Vector3 = Vector3.RIGHT
 var is_shooting: bool = false
@@ -23,11 +25,13 @@ func apply_scaling():
 	cylinder.position = cylinder_position
 	cylinder.radius = scaled_radius
 	cylinder.height = scaled_radius
+	cylinder.material = cannon_material
 
 	var hole = $structure/hole
 	hole.position = cylinder_position
 	hole.radius = scaled_radius * 0.9
 	hole.height = scaled_radius * 1.1
+	hole.material = cannon_material
 
 func start_shooting():
 	is_shooting = true
@@ -47,9 +51,7 @@ func spawn_and_shoot_sphere():
 	sphere_mesh.mesh = sphere_shape
 	sphere_body.add_child(sphere_mesh)
 
-	var material = StandardMaterial3D.new()
-	material.albedo_color = Color(1.0, 1.0, 0.0)
-	sphere_mesh.set_surface_override_material(0, material)
+	sphere_mesh.set_surface_override_material(0, projectile_material)
 
 	var collision_shape = CollisionShape3D.new()
 	var sphere_collision = SphereShape3D.new()
@@ -63,6 +65,8 @@ func spawn_and_shoot_sphere():
 
 func move_sphere(sphere: RigidBody3D):
 	var distance_traveled = 0.0
+	var rotation_speed = 5.0
+	
 	while distance_traveled < shoot_distance:
 		if not is_instance_valid(sphere) or not is_inside_tree():
 			return
@@ -76,8 +80,13 @@ func move_sphere(sphere: RigidBody3D):
 			return
 
 		await get_tree().process_frame
-		sphere.position += direction * speed * get_process_delta_time()
-		distance_traveled += speed * get_process_delta_time()
+		var delta_time = get_process_delta_time()
+		
+		sphere.position += direction * speed * delta_time
+		distance_traveled += speed * delta_time
+		
+		if rotate:
+			sphere.rotate_z(deg_to_rad(rotation_speed * delta_time * -50))
 
 	if is_instance_valid(sphere):
 		sphere.queue_free()

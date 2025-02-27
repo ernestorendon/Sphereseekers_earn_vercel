@@ -8,7 +8,7 @@ extends Node3D
 	"r1": true, "r2": true, "r3": true, "r4": true, "r5": true, 
 	"r6": true, "r7": true, "r8": true, "r9": true
 }
-@export var tile_color : Color = Color(1.0,1.0,0.0)
+@export var tile_material = StandardMaterial3D
 
 var segment_count: int = 9
 
@@ -66,6 +66,4 @@ func set_tile_state(tile_name: String, enabled: bool):
 			tile_node.use_collision = enabled
 			
 func apply_material(tile: CSGBox3D):
-	var material = StandardMaterial3D.new()
-	material.albedo_color = tile_color
-	tile.material = material
+	tile.material = tile_material

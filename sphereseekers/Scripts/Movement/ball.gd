@@ -7,9 +7,15 @@ extends RigidBody3D
 
 @onready var camera_3d: Camera3D = $"../CameraRig/HRotation/VRotation/SpringArm3D/Camera3D"
 
+var can_move: bool = true
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	
+	if not can_move:
+		linear_velocity = Vector3.ZERO
+		angular_velocity = Vector3.ZERO
+		return
+		
 	# Set speed limits for speed and rotation speed of marble
 	linear_velocity.z = clamp(linear_velocity.z, -max_linear_velocity, max_linear_velocity)
 	linear_velocity.x = clamp(linear_velocity.x, -max_linear_velocity, max_linear_velocity)
@@ -76,6 +82,11 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	apply_central_force(direction_forward * movement_speed * get_physics_process_delta_time())
 	apply_central_force(direction_horizontal * movement_speed * get_physics_process_delta_time())
 
+
+func disable_controls():
+	can_move = false
+	linear_velocity = Vector3.ZERO
+	angular_velocity = Vector3.ZERO
 
 # Collision detection method
 func _on_body_entered(body: Node3D) -> void:
