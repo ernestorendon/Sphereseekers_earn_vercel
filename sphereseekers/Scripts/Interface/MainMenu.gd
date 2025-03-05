@@ -28,18 +28,17 @@ func _on_Continue_pressed() -> void:
 
 # Signal handler for the "New Game" button
 func _on_new_game_pressed() -> void:
-	# Change the scene to Level1
-	Global.is_paused = false
-	get_tree().change_scene_to_file("res://Scenes/Levels/Tutorial.tscn")
+	# set name first
+	get_tree().change_scene_to_file("res://Scenes/Interface/SetNameMenu.tscn")
 
-func _on_Load_Game_pressed() -> void:
-	pass
+func _on_load_game_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/Interface/LoadGameMenu.tscn")
 	
 func _on_options_pressed() -> void:
 	pass
 
 func _on_exit_pressed() -> void:
-	pass
+	get_tree().quit()
 	
 func is_running_on_mobile_browser() -> bool:
 	if not OS.has_feature("web"):
