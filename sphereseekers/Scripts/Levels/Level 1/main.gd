@@ -6,6 +6,7 @@ var timer = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	print("Tutorial Running")
 	# Show Controls menu on first launch
 	if not Global.controls_shown:
 		show_controls_menu()
@@ -27,7 +28,7 @@ func _unhandled_input(event):
 			else:
 				unpause_game()
 				
-func process():
+func process(delta):
 	if Global.is_paused:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	else:
