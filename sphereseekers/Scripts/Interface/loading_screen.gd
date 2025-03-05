@@ -12,7 +12,7 @@ func _ready():
 	var texture_size = image.texture.get_size()
 	image.pivot_offset = texture_size / 2
 	
-	scene_path = "res://Scenes/Levels/Tutorial.tscn"
+	scene_path = get_path_to_level()
 	ResourceLoader.load_threaded_request(scene_path)
 
 func _process(delta):
@@ -23,6 +23,11 @@ func _process(delta):
 		$image.rotation_degrees += 100 * delta
 	elif status == ResourceLoader.THREAD_LOAD_LOADED:
 		get_tree().change_scene_to_packed(ResourceLoader.load_threaded_get(scene_path))
+		
+	# Checks what is actually being loaded for the level	
+	for dependency in ResourceLoader.get_dependencies(scene_path):
+		print(dependency.get_slice("::", 0)) # Prints the UID.
+		print(dependency.get_slice("::", 2)) # Prints the path.
 		
 func set_objects(background, image):
 	var screen_size = get_viewport_rect().size
@@ -62,3 +67,11 @@ func set_objects(background, image):
 		(width - image.size.x) / 2,
 		(height - image.size.y) / 2
 	))
+
+func get_path_to_level() -> String:
+	match Global.level_to_play:
+		Global.levels.TUTORIAL:
+			return "res://Scenes/Levels/Tutorial.tscn"
+		Global.levels.LEVEL1:
+			return "res://Scenes/Levels/level_1.tscn"
+	return "res://Scenes/Interface/MainMenu.tscn"
