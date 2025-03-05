@@ -27,7 +27,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	var horizontal_input = Input.get_action_raw_strength("ui_right") - Input.get_action_raw_strength("ui_left")
 	
 	# Get position (a/k/a "transform") of camera
-	var camera_tranform = camera_3d.get_camera_transform()
+	var _camera_tranform = camera_3d.get_camera_transform()
 	
 	# Cancel out y-component to keep movement horizontal
 	var cam_forward = (camera_3d.global_transform.basis.z * Vector3(1, 0, 1)).normalized()
@@ -52,10 +52,10 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		
 		
 		if (Input.is_action_just_pressed("spacebar")):
-			print("SHIFT + SPACEBAR PRESSED")
-			print("Rotation impulse direction matrix: ", direction_forward)
-			print("Angular velocity (magnitude): ", get_angular_velocity().length())
-			print("Angular velocity (vector): ", get_angular_velocity())
+			#print("SHIFT + SPACEBAR PRESSED")
+			#print("Rotation impulse direction matrix: ", direction_forward)
+			#print("Angular velocity (magnitude): ", get_angular_velocity().length())
+			#print("Angular velocity (vector): ", get_angular_velocity())
 			apply_torque_impulse(-cam_horizontal * spin_boost_factor)
 		return
 			
@@ -69,16 +69,16 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		var spin_speed = get_angular_velocity().length()
 		apply_central_impulse(spin_speed * final_boost_vector) # Apply boost to marble
 		
-		print("shift released!")
+		#print("shift released!")
 	
-	print("Forward Before force: ", direction_forward)
-	print("Horizonatal Before force: ", direction_horizontal)
-	print("==========================================")
-	print("Linear velocity (magnitude): ", get_linear_velocity().length())
-	print("Linear velocity (vector): ", get_linear_velocity())
-	print("==========================================")
-	print("Angular velocity (magnitude): ", get_angular_velocity().length())
-	print("Angular velocity (vector): ", get_angular_velocity())
+	#print("Forward Before force: ", direction_forward)
+	#print("Horizonatal Before force: ", direction_horizontal)
+	#print("==========================================")
+	#print("Linear velocity (magnitude): ", get_linear_velocity().length())
+	#print("Linear velocity (vector): ", get_linear_velocity())
+	#print("==========================================")
+	#print("Angular velocity (magnitude): ", get_angular_velocity().length())
+	#print("Angular velocity (vector): ", get_angular_velocity())
 	apply_central_force(direction_forward * movement_speed * get_physics_process_delta_time())
 	apply_central_force(direction_horizontal * movement_speed * get_physics_process_delta_time())
 
@@ -92,8 +92,6 @@ func disable_controls():
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("enemy_balls"):
 		reset_position()
-	if body.is_in_group("exit"):
-		print("GG WP")
 
 # Resets player position to (0, 5, -67.5)
 func reset_position() -> void:

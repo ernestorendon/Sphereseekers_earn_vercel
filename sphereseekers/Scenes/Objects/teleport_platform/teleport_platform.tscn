@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://copu860806ql0"]
 
 [ext_resource type="PackedScene" uid="uid://dd86yv0a58ro3" path="res://Scenes/Objects/teleport_platform/platform.tscn" id="1_x6d0l"]
-[ext_resource type="Script" path="res://Scripts/Objects/exit_area.gd" id="2_1sfpr"]
+[ext_resource type="Script" uid="uid://bcck0syn6x4lh" path="res://Scripts/Objects/exit_area.gd" id="2_1sfpr"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_4f1rl"]
 radius = 2.5

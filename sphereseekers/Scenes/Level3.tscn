@@ -1,8 +1,5 @@
 [gd_scene load_steps=10 format=3 uid="uid://lo7b3gqu51ur"]
 
-[ext_resource type="Script" path="res://Scripts/BallController.cs" id="1_8p0vj"]
-[ext_resource type="Script" path="res://Scripts/CameraRig.cs" id="1_60i3b"]
-
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qtm2y"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t1uvm"]
@@ -16,6 +13,9 @@ bottom_radius = 1.0
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_y7nn2"]
 radius = 12.0
 
+[sub_resource type="Resource" id="Resource_8toa3"]
+metadata/__load_path__ = "res://Scripts/BallController.cs"
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l2dy4"]
 albedo_color = Color(0.819608, 0, 0.4, 0.992157)
 
@@ -23,6 +23,9 @@ albedo_color = Color(0.819608, 0, 0.4, 0.992157)
 material = SubResource("StandardMaterial3D_l2dy4")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_n4urj"]
+
+[sub_resource type="Resource" id="Resource_0gyft"]
+metadata/__load_path__ = "res://Scripts/CameraRig.cs"
 
 [node name="Node3D" type="Node3D"]
 
@@ -37,7 +40,7 @@ shape = SubResource("CylinderShape3D_y7nn2")
 
 [node name="Ball" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 8.74228e-08, 8.74227e-08, 8.74227e-08, -1, 0, 8.74227e-08, 7.64274e-15, -1, 0, 3, -10)
-script = ExtResource("1_8p0vj")
+script = SubResource("Resource_8toa3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ball"]
 transform = Transform3D(-0.677544, 3.10427e-08, 0.735482, -1.15613e-07, -1, -6.42979e-08, 0.735482, -1.28596e-07, 0.677544, 0, 0, 0)
@@ -49,7 +52,7 @@ shape = SubResource("SphereShape3D_n4urj")
 
 [node name="CameraRig" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 22, 0)
-script = ExtResource("1_60i3b")
+script = SubResource("Resource_0gyft")
 
 [node name="Camera3D" type="Camera3D" parent="CameraRig"]
 current = true

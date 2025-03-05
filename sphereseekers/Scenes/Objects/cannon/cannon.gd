@@ -4,33 +4,31 @@ extends Node3D
 @export var shoot_distance: float = 10.0
 @export var speed: float = 20.0
 @export var shoot_delay: float = 0.5
-@export var cylinder_radius: float = 5
-@export var scale_factor: float = 1.0
 @export var cannon_material: StandardMaterial3D
 @export var projectile_material: StandardMaterial3D
 @export var rotate: bool = false
 
+var cylinder_radius: float
+var scale_factor : float
 var direction: Vector3 = Vector3.RIGHT
 var is_shooting: bool = false
 
 func _ready() -> void:
+	var structure = $structure
+	scale_factor = scale.x
+	cylinder_radius = structure.radius
+
 	apply_scaling()
 
 	start_shooting()
 
 func apply_scaling():
 	var scaled_radius = cylinder_radius * scale_factor
-
+	
 	var cylinder = $structure
-	cylinder.position = cylinder_position
-	cylinder.radius = scaled_radius
-	cylinder.height = scaled_radius
 	cylinder.material = cannon_material
 
 	var hole = $structure/hole
-	hole.position = cylinder_position
-	hole.radius = scaled_radius * 0.9
-	hole.height = scaled_radius * 1.1
 	hole.material = cannon_material
 
 func start_shooting():
@@ -44,8 +42,10 @@ func spawn_and_shoot_sphere():
 
 	var sphere_mesh = MeshInstance3D.new()
 	var sphere_shape = SphereMesh.new()
+	
+	var scaled_radius = cylinder_radius * scale_factor
+	var sphere_radius = scaled_radius * 0.9
 
-	var sphere_radius = (cylinder_radius * 0.9) * scale_factor
 	sphere_shape.radius = sphere_radius
 	sphere_shape.height = sphere_radius * 2
 	sphere_mesh.mesh = sphere_shape

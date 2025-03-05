@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bhfsenf56s678"
-path="res://.godot/imported/platform.glb-128c34f382da0ab80597996a2c945042.scn"
+uid="uid://banlkpm35g30o"
+path="res://.godot/imported/big_room.glb-0fdf7bf973775e5619f2a93a8f1dda32.scn"
 
 [deps]
 
-source_file="res://Scenes/Objects/teleport_platform/platform.glb"
-dest_files=["res://.godot/imported/platform.glb-128c34f382da0ab80597996a2c945042.scn"]
+source_file="res://Scenes/Objects/big_room/big_room.glb"
+dest_files=["res://.godot/imported/big_room.glb-0fdf7bf973775e5619f2a93a8f1dda32.scn"]
 
 [params]
 

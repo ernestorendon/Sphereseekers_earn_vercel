@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dd86yv0a58ro3"]
 
 [ext_resource type="PackedScene" uid="uid://bhfsenf56s678" path="res://Scenes/Objects/teleport_platform/platform.glb" id="1_o6ep8"]
-[ext_resource type="Script" path="res://Scenes/Objects/teleport_platform/middle.gd" id="2_heunl"]
+[ext_resource type="Script" uid="uid://dcu2dsxv1bfhd" path="res://Scenes/Objects/teleport_platform/middle.gd" id="2_heunl"]
 [ext_resource type="Material" uid="uid://cg7l6w2h0aq22" path="res://Assets/Materials/aluminium/aluminium.tres" id="2_hf7qq"]
 [ext_resource type="Material" uid="uid://bv6dr534vwcr1" path="res://Assets/Materials/ice/ice.tres" id="3_r7x4l"]
 [ext_resource type="Texture2D" uid="uid://bl1t61kwmu8r1" path="res://Assets/particles/trace_01.png" id="5_sqifr"]
@@ -12,6 +12,7 @@ emission_ring_axis = Vector3(0, 0, 1)
 emission_ring_height = 1.0
 emission_ring_radius = 1.0
 emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
 velocity_pivot = Vector3(0, 1, 0)
 direction = Vector3(0, 1, 0)
 gravity = Vector3(0, 9.8, 0)

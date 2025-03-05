@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://chy427wghii5s"]
 
-[ext_resource type="Script" path="res://Scenes/Objects/cannon/cannon.gd" id="1_ps37k"]
+[ext_resource type="Script" uid="uid://7joyjq21kmn8" path="res://Scenes/Objects/cannon/cannon.gd" id="1_ps37k"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cmgwb"]
 

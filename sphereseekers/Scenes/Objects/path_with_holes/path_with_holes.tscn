@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dqeuanfk6o722"]
 
-[ext_resource type="Script" path="res://Scenes/Objects/path_with_holes/path_with_holes.gd" id="1_0imxb"]
+[ext_resource type="Script" uid="uid://7kxr5xrffx8e" path="res://Scenes/Objects/path_with_holes/path_with_holes.gd" id="1_0imxb"]
 
 [node name="PathWithHoles" type="Node3D"]
 script = ExtResource("1_0imxb")

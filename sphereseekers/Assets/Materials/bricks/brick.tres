@@ -23,4 +23,5 @@ heightmap_min_layers = 4
 heightmap_max_layers = 16
 heightmap_texture = ExtResource("1")
 heightmap_flip_texture = true
+uv1_triplanar = true
 texture_filter = 5
