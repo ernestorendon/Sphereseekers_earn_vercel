@@ -22,7 +22,7 @@ func _on_continue_pressed():
 	var trimmed_text = name_input.text.strip_edges()
 	
 	if trimmed_text == "":
-		error_label.text = "Please enter a name"
+		error_label.text = "Please enter your name"
 		error_label.modulate = Color(1, 0, 0)
 		error_label.visible = true
 		return
