@@ -9,6 +9,7 @@ var continue_button
 func _ready():
 	label = $title
 	name_input = $name_input
+	name_input.gui_input.connect(_on_name_input_gui_input)
 	continue_button = $continue
 	error_label = $error
 	
@@ -17,6 +18,13 @@ func _ready():
 	else:
 		# we assume that is a smartphone
 		set_objects_for_smartphone(label, name_input, continue_button)
+		name_input.grab_focus()  # This forces the input box to gain focus
+
+func _on_name_input_gui_input(event):
+	if event is InputEventScreenTouch and event.pressed:
+		print("Input tapped!")  # Debugging line to confirm it's working
+		name_input.grab_focus()
+
 
 func _on_continue_pressed():
 	var trimmed_text = name_input.text.strip_edges()

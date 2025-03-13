@@ -1,14 +1,14 @@
 [gd_scene load_steps=36 format=3 uid="uid://bkhapywan2k7e"]
 
-[ext_resource type="Script" path="res://Scripts/Levels/Level 1/main.gd" id="1_bkrq4"]
-[ext_resource type="Script" path="res://Scripts/Camera/camera_rig.gd" id="2_6qjlu"]
-[ext_resource type="Script" path="res://Scripts/Movement/ball.gd" id="3_v4j33"]
+[ext_resource type="Script" uid="uid://ddkojlmd2rted" path="res://Scripts/Levels/Level 1/main.gd" id="1_bkrq4"]
+[ext_resource type="Script" uid="uid://dqphu7hru833b" path="res://Scripts/Camera/camera_rig.gd" id="2_6qjlu"]
+[ext_resource type="Script" uid="uid://gpqcpjk7v5un" path="res://Scripts/Movement/ball.gd" id="3_v4j33"]
 [ext_resource type="Texture2D" uid="uid://nj5sw8i2r3wf" path="res://Vector/Textures/icon.svg" id="4_k6gek"]
 [ext_resource type="Texture2D" uid="uid://cawwrxtf326a5" path="res://Vector/Textures/texture_01.svg" id="5_v414d"]
 [ext_resource type="Texture2D" uid="uid://gql73dyr0r3e" path="res://Vector/Textures/texture_02.svg" id="6_04phf"]
-[ext_resource type="Script" path="res://Scripts/Objects/limit.gd" id="7_ajsod"]
-[ext_resource type="Script" path="res://Scripts/Objects/cannonball.gd" id="8_0y04l"]
-[ext_resource type="Script" path="res://Scripts/Objects/exit_area.gd" id="9_mb8kl"]
+[ext_resource type="Script" uid="uid://cuuifm80oqb0d" path="res://Scripts/Objects/limit.gd" id="7_ajsod"]
+[ext_resource type="Script" uid="uid://c1e6803srg2fn" path="res://Scripts/Objects/cannonball.gd" id="8_0y04l"]
+[ext_resource type="Script" uid="uid://c38leufvpn0gl" path="res://Scripts/Objects/exit_area.gd" id="9_mb8kl"]
 
 [sub_resource type="GDScript" id="GDScript_5len1"]
 script/source = "extends CanvasLayer
