@@ -10,6 +10,10 @@ func _ready():
 	label = $title
 	name_input = $name_input
 	name_input.gui_input.connect(_on_name_input_gui_input)
+	# Enable virtual keyboard
+	name_input.virtual_keyboard_enabled = true
+	# Set focus mode
+	name_input.focus_mode = Control.FOCUS_ALL
 	continue_button = $continue
 	error_label = $error
 	
@@ -20,10 +24,19 @@ func _ready():
 		set_objects_for_smartphone(label, name_input, continue_button)
 		name_input.grab_focus()  # This forces the input box to gain focus
 
+func _input(event):
+	if event is InputEventScreenTouch and event.pressed:
+		var rect = name_input.get_global_rect()
+		if rect.has_point(event.position):
+			print("Global touch on input field")
+			name_input.grab_focus()
+
 func _on_name_input_gui_input(event):
 	if event is InputEventScreenTouch and event.pressed:
-		print("Input tapped!")  # Debugging line to confirm it's working
-		name_input.grab_focus()
+		print("Input tapped!")  # Debugging line
+		name_input.release_focus()  # First release any existing focus
+		name_input.grab_focus()     # Then grab focus again
+		OS.request_permissions()    # Request system permissions if needed (might help on some devices)
 
 
 func _on_continue_pressed():
